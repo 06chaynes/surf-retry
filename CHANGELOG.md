@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.3.0] - 2023-07-14
+
+### Changed
+
+- Set `default-features` to `false` for `surf` dependency.
+- Updated the minimum versions of the following dependencies:
+  - chrono [0.4.26]
+  - surf-governor [0.2.0]
+  - url [2.4.0]
+  - wiremock [0.5.19]
+
 ## [0.2.1] - 2022-11-16
 
 ### Changed
