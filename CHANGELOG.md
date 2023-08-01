@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.1] - 2023-08-01
+
+### Changed
+
+- Some dependency updates were not committed in the previous release. This release includes those updates.
+
+- Updated the minimum versions of the following dependencies:
+  - retry-policies [0.2.0]
+  - chrono [0.4.26]
+  - url [2.4.0]
+  - wiremock [0.5.19]
+
 ## [0.3.0] - 2023-07-14
 
 ### Changed

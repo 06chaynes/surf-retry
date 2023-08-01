@@ -1,6 +1,6 @@
 [package]
 name = "surf-retry"
-version = "0.3.0"
+version = "0.3.1"
 description = "A retry middleware for surf"
 authors = ["Christian Haynes <06chaynes@gmail.com>"]
 repository = "https://github.com/06chaynes/surf-retry.git"
@@ -14,15 +14,15 @@ edition = "2021"
 
 [dependencies]
 async-std = "1.12.0"
-chrono = { version = "0.4.23", features = ["clock"], default-features = false }
+chrono = { version = "0.4.26", features = ["clock"], default-features = false }
 http-types = "2.12.0"
 httpdate = "1.0.2"
-retry-policies = "0.1.2"
+retry-policies = "0.2.0"
 surf = { version = "2.3.2", default-features = false }
 
 [dev-dependencies]
 async-std = { version = "1.12.0", features = ["attributes"] }
 surf = { version = "2.3.2", features = ["curl-client"] }
 surf-governor = "0.2.0"
-url = "2.3.1"
-wiremock = "0.5.15"
+url = "2.4.0"
+wiremock = "0.5.19"
