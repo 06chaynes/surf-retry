@@ -112,10 +112,13 @@ fn retry_to_seconds(header: &headers::HeaderValue) -> Result<u64> {
 
 #[surf::utils::async_trait]
 impl<T: RetryPolicy + Send + Sync + 'static> Middleware for RetryMiddleware<T> {
-    async fn handle(&self, req: Request, client: Client, next: Next<'_>) -> Result<Response> {
+    async fn handle(&self, mut req: Request, client: Client, next: Next<'_>) -> Result<Response> {
         let mut retries: u32 = 0;
 
-        let r: Request = req.clone();
+        let mut r: Request = req.clone();
+        let request_body = req.take_body().into_bytes().await?;
+        r.set_body(request_body.clone());
+
         let res = next.run(r, client.clone()).await?;
         if RETRY_CODES.contains(&res.status()) {
             while retries < self.max_retries {
@@ -137,7 +140,9 @@ impl<T: RetryPolicy + Send + Sync + 'static> Middleware for RetryMiddleware<T> {
 
                 task::sleep(Duration::from_secs(secs)).await;
 
-                let r: Request = req.clone();
+                let mut r: Request = req.clone();
+                r.set_body(request_body.clone());
+
                 let res = next.run(r, client.clone()).await?;
                 if !RETRY_CODES.contains(&res.status()) {
                     return Ok(res);

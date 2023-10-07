@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.2] - 2023-10-06
+
+### Changed
+
+- Fixed an issue cloning the request body causing the request body to be empty.
+
 ## [0.3.1] - 2023-08-01
 
 ### Changed
